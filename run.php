@@ -1,4 +1,8 @@
 <?php
+/*
+* Coded by Dandy Raka ( https://github.com/dandyraka/TelkBomb )
+* Telkomsel SMS Bomber
+*/
 function telkbomb($no, $jum, $wait){
     $x = 0; 
     while($x < $jum) {
@@ -17,6 +21,21 @@ function telkbomb($no, $jum, $wait){
     }
 }
 
-$execute = telkbomb('62822xxxxxxxx', '1', '0');
+if (!empty($_GET['nomor']) AND !empty($_GET['jumlah']) AND !empty($_GET['delay'])) {
+$nomor = $_GET['nomor'];
+$jumlah = $_GET['jumlah'];
+$delay = $_GET['delay'];
+
+/*
+* Example Execute : run.php?nomor=62822xxxxxxxx&jumlah=10&delay=2
+* Updated 26-11-2017
+*/
+
+$execute = telkbomb($nomor, $jumlah, $delay);
 print $execute;
+} else {
+    echo "Salah boss ...<br />";
+    echo "Contohnya : run.php?nomor=62822xxxxxxxx&jumlah=10&delay=2";
+}
+
 ?>
